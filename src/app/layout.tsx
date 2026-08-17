@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   title: { default: "PaperGuard — Find. Practice. Repeat.", template: "%s — PaperGuard" },
   description:
-    "A fast, modern, community-driven repository of school examination papers — search, preview, and download ICSE/ISC & CBSE papers from any school.",
+    "A fast, modern, community-driven repository of school examination papers — search, preview, and download ISC & CBSE papers from any school.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

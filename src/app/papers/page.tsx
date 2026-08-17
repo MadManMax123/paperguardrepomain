@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Browse Papers",
-  description: "Search and filter ICSE/ISC & CBSE examination papers by board, year, class, subject, school and exam type.",
+  description: "Search and filter ISC & CBSE examination papers by board, year, class, subject, school and exam type.",
 };
 
 export default async function PapersPage({

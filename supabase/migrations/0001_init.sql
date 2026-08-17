@@ -16,11 +16,11 @@ create type report_status as enum ('open', 'resolved', 'dismissed');
 create type school_request_status as enum ('pending', 'approved', 'rejected');
 
 -- ---------------------------------------------------------
--- BOARDS (extensible: ICSE/ISC, CBSE, later state boards...)
+-- BOARDS (extensible: ISC, CBSE, later ICSE, state boards...)
 -- ---------------------------------------------------------
 create table boards (
   id text primary key,              -- e.g. 'isc', 'cbse'
-  name text not null,               -- e.g. 'ICSE/ISC', 'CBSE'
+  name text not null,               -- e.g. 'ISC', 'CBSE'
   created_at timestamptz not null default now()
 );
 

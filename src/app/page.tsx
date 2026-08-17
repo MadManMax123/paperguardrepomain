@@ -23,7 +23,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "PaperGuard — Find. Practice. Repeat.",
   description:
-      "A fast, modern, community-driven repository of school examination papers — search, preview, and download ICSE/ISC & CBSE papers from any school.",
+      "A fast, modern, community-driven repository of school examination papers — search, preview, and download ISC & CBSE papers from any school.",
 };
 
 const SUBJECT_GRADIENTS = [
@@ -78,7 +78,7 @@ export default async function HomePage() {
             </h1>
 
             <p className="mt-5 max-w-xl text-balance text-base text-muted-foreground sm:text-lg">
-              Search, preview, and download real ICSE/ISC &amp; CBSE examination papers
+              Search, preview, and download real ISC &amp; CBSE examination papers
               from schools across the country — organized, verified, and free.
             </p>
 
@@ -294,7 +294,7 @@ export default async function HomePage() {
                 {
                   icon: PackageOpen,
                   title: "Download entire collections as ZIP",
-                  body: "Filter to exactly what you need — like ICSE/ISC → Class 11 → Physics → 2024–2026 — and download the whole collection at once as a ZIP.",
+                  body: "Filter to exactly what you need — like ISC → Class 11 → Physics → 2024–2026 — and download the whole collection at once as a ZIP.",
                   accent: "text-seal bg-seal/10",
                 },
               ].map((item) => (

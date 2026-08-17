@@ -1,7 +1,7 @@
 # PaperVault
 
 A fast, modern, community-driven repository of school examination papers — search, preview,
-and download ICSE/ISC & CBSE papers from any school. Built with Next.js (App Router), TypeScript,
+and download ISC & CBSE papers from any school. Built with Next.js (App Router), TypeScript,
 Tailwind, and Supabase (Postgres + Auth + Storage + RLS).
 
 ## Architecture

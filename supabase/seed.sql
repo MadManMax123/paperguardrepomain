@@ -1,7 +1,7 @@
 -- Seed reference data. Safe to re-run.
 
 insert into boards (id, name) values
-  ('isc', 'ICSE/ISC'),
+  ('isc', 'ISC'),
   ('cbse', 'CBSE')
 on conflict (id) do nothing;
 
