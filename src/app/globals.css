@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* "Paper" — a cool, slightly grey-green off-white, not the warm cream default */
+    --background: 60 12% 97%;
+    --foreground: 222 35% 13%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 35% 13%;
+    /* "Ink" — deep ledger navy, the working primary */
+    --primary: 222 55% 22%;
+    --primary-foreground: 48 30% 96%;
+    --muted: 60 8% 93%;
+    --muted-foreground: 220 12% 42%;
+    --accent: 210 20% 92%;
+    --accent-foreground: 222 35% 13%;
+    --border: 220 14% 86%;
+    --destructive: 8 68% 42%;
+    --destructive-foreground: 40 30% 97%;
+    /* "Highlighter" — amber accent, used sparingly for emphasis + the stamp mark */
+    --highlight: 42 96% 56%;
+    --highlight-foreground: 222 35% 13%;
+    /* "Seal" — approval green, verified badges, success states */
+    --seal: 152 42% 28%;
+    --seal-foreground: 40 30% 97%;
+    --radius: 0.6rem;
+  }
+
+  .dark {
+    --background: 222 32% 8%;
+    --foreground: 48 20% 94%;
+    --card: 222 28% 11%;
+    --card-foreground: 48 20% 94%;
+    --primary: 218 75% 68%;
+    --primary-foreground: 222 32% 9%;
+    --muted: 222 20% 15%;
+    --muted-foreground: 220 12% 68%;
+    --accent: 222 20% 17%;
+    --accent-foreground: 48 20% 94%;
+    --border: 222 16% 20%;
+    --destructive: 8 62% 55%;
+    --destructive-foreground: 222 32% 9%;
+    --highlight: 42 90% 60%;
+    --highlight-foreground: 222 32% 9%;
+    --seal: 152 38% 48%;
+    --seal-foreground: 222 32% 9%;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  ::selection {
+    background-color: hsl(var(--highlight) / 0.45);
+  }
+}
+
+@layer utilities {
+  /* Torn / perforated edge, like the tear line on an exam answer booklet */
+  .edge-perforated {
+    background-image: radial-gradient(circle, hsl(var(--border)) 1px, transparent 1.3px);
+    background-size: 10px 1px;
+    background-repeat: repeat-x;
+    background-position: center;
+    height: 1px;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

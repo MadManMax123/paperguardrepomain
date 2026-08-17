@@ -1,0 +1,14 @@
+node_modules
+.next
+out
+.env
+.env.local
+.env*.local
+*.log
+.DS_Store
+.idea
+
+client_secret_912516685400-msptflmcqppsjhvkv7gurgparkc2o207.apps.googleusercontent.com.json
+
+.vercel
+client_secret_*.json
