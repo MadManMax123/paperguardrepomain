@@ -27,7 +27,7 @@ export function SearchFilters({
   const searchParams = useSearchParams();
 
   function updateFilter(key: string, value: string) {
-    const params = new URLSearchParams(searchParams.toString());
+    const params = new URLSearchParams(searchParams?.toString());
     if (value) params.set(key, value);
     else params.delete(key);
     params.delete("page"); // reset pagination whenever filters change

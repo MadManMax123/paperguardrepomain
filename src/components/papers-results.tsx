@@ -34,7 +34,7 @@ export function PapersResults({
   }
 
   function goToPage(page: number) {
-    const params = new URLSearchParams(searchParams.toString());
+    const params = new URLSearchParams(searchParams?.toString());
     params.set("page", String(page));
     router.push(`${pathname}?${params.toString()}`);
   }
