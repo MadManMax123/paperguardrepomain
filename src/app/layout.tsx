@@ -5,6 +5,7 @@ import { Toaster } from "sonner";
 import { NavBar } from "@/components/nav-bar";
 import { PageTransition } from "@/components/page-transition";
 import { HelpWidget } from "@/components/help-widget";
+import { Footer } from "@/components/footer";
 
 // Lexend: designed and validated to increase reading proficiency — the body
 // face students will spend the most time with.
@@ -62,6 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className="flex-1">
           <PageTransition>{children}</PageTransition>
         </main>
+        <Footer />
         <Toaster richColors position="top-center" />
         <HelpWidget />
       </body>
