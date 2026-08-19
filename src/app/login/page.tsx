@@ -22,7 +22,7 @@ function LoginForm() {
   async function signInWith(provider: "google" | "discord") {
     setSubmitting(provider);
     const supabase = createClient();
-    const next = searchParams.get("next") ?? "/";
+    const next = searchParams?.get("next") ?? "/";
     const { error } = await supabase.auth.signInWithOAuth({
       provider,
       options: { redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}` },
