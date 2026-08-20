@@ -330,7 +330,7 @@ export default async function HomePage() {
               Have a paper others could use?
             </h2>
             <p className="relative mx-auto mt-2 max-w-md text-sm text-primary-foreground/80">
-              Upload your school's papers and help build the largest open archive
+              Upload your school&apos;s papers and help build the largest open archive
               of examination papers.
             </p>
             <div className="relative mt-7">

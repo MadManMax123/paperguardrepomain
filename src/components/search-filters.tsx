@@ -31,11 +31,11 @@ export function SearchFilters({
     if (value) params.set(key, value);
     else params.delete(key);
     params.delete("page"); // reset pagination whenever filters change
-    router.push(`${pathname}?${params.toString()}`);
+    router.push(`${pathname ?? "/"}?${params.toString()}`);
   }
 
   function clearAll() {
-    router.push(pathname);
+    router.push(pathname ?? "/");
   }
 
   return (

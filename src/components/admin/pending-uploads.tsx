@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { toast } from "sonner";
 import { formatDate, formatFileSize } from "@/lib/utils";
+import { PdfFullscreenModal } from "@/components/pdf-preview";
 
 interface PendingPaper {
   id: string;
@@ -140,13 +141,14 @@ export function PendingUploads() {
         </div>
       ))}
 
-      {previewUrl && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4" onClick={() => setPreviewUrl(null)}>
-          <div className="h-[85vh] w-full max-w-2xl rounded-lg bg-card p-2" onClick={(e) => e.stopPropagation()}>
-            <iframe src={previewUrl} className="h-full w-full rounded-md" title="Pending paper preview" />
-          </div>
-        </div>
-      )}
+      <PdfFullscreenModal
+        url={previewUrl}
+        title="Pending paper preview"
+        open={!!previewUrl}
+        onOpenChange={(open) => {
+          if (!open) setPreviewUrl(null);
+        }}
+      />
     </div>
   );
 }
