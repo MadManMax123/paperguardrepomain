@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/server";
 import { Badge } from "@/components/ui/badge";
 import { formatDate, formatFileSize } from "@/lib/utils";
 import { ReportButton } from "@/components/report-button";
+import { PdfPreview } from "@/components/pdf-preview";
 
 const EXAM_TYPE_LABELS: Record<string, string> = {
   "unit-test": "Unit Test",
@@ -72,15 +73,17 @@ export default async function PaperDetailPage({ params }: { params: { id: string
             </div>
           </div>
 
-          <div className="aspect-[3/4] w-full overflow-hidden rounded-lg border border-border bg-muted">
-            {signed?.signedUrl ? (
-              <iframe src={signed.signedUrl} title={`${subject} preview`} className="h-full w-full" />
-            ) : (
-              <div className="flex h-full items-center justify-center text-sm text-muted-foreground">
-                Preview unavailable
-              </div>
-            )}
-          </div>
+          {signed?.signedUrl ? (
+            <PdfPreview
+              url={signed.signedUrl}
+              title={`${subject} — ${examLabel} ${paper.year}`}
+              downloadHref={`/api/download/${paper.id}`}
+            />
+          ) : (
+            <div className="flex aspect-[3/4] w-full items-center justify-center rounded-lg border border-border bg-muted text-sm text-muted-foreground">
+              Preview unavailable
+            </div>
+          )}
         </div>
 
         <aside className="space-y-4">

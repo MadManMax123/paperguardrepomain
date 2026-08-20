@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { toast } from "sonner";
 import { formatDate, formatFileSize } from "@/lib/utils";
+import { PdfPreviewModal } from "@/components/pdf-preview";
 
 interface PendingPaper {
   id: string;
@@ -23,6 +24,7 @@ interface PendingPaper {
 export function PendingUploads() {
   const [rows, setRows] = useState<PendingPaper[] | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [previewTitle, setPreviewTitle] = useState<string>("Pending paper preview");
   const [busyId, setBusyId] = useState<string | null>(null);
   const supabase = createClient();
 
@@ -42,8 +44,9 @@ export function PendingUploads() {
     load();
   }, []);
 
-  async function preview(path: string) {
+  async function preview(path: string, title: string) {
     const { data } = await supabase.storage.from("papers").createSignedUrl(path, 300);
+    setPreviewTitle(title);
     setPreviewUrl(data?.signedUrl ?? null);
   }
 
@@ -111,7 +114,10 @@ export function PendingUploads() {
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
-              <button onClick={() => preview(r.file_path)} className="rounded-md border border-border px-3 py-1.5 text-xs font-medium hover:bg-accent">
+              <button
+                onClick={() => preview(r.file_path, `${r.subjects?.name ?? "Unknown subject"} — ${r.schools?.name ?? "Unknown school"}`)}
+                className="rounded-md border border-border px-3 py-1.5 text-xs font-medium hover:bg-accent"
+              >
                 Preview
               </button>
               <button
@@ -141,11 +147,12 @@ export function PendingUploads() {
       ))}
 
       {previewUrl && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4" onClick={() => setPreviewUrl(null)}>
-          <div className="h-[85vh] w-full max-w-2xl rounded-lg bg-card p-2" onClick={(e) => e.stopPropagation()}>
-            <iframe src={previewUrl} className="h-full w-full rounded-md" title="Pending paper preview" />
-          </div>
-        </div>
+        <PdfPreviewModal
+          open={!!previewUrl}
+          onOpenChange={(o) => !o && setPreviewUrl(null)}
+          url={previewUrl}
+          title={previewTitle}
+        />
       )}
     </div>
   );
